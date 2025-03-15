@@ -8,9 +8,16 @@ import com.rose.learnspringframework.enterprise.example.data.DataService;
 @Component
 public class BusinessService{
 	
-	@Autowired
 	private DataService dataService;
 	
+	@Autowired
+	public void setDataService(DataService dataService) {
+		System.out.println("Setter injection");
+		this.dataService = dataService;
+	}
+
+
+
 	public long calculateSum() {
 		var data = dataService.getData();
 		return data.stream().reduce(Integer::sum).get();
