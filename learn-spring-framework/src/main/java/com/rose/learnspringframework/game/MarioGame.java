@@ -2,6 +2,7 @@ package com.rose.learnspringframework.game;
 
 import org.springframework.stereotype.Component;
 
+/*Component es solo una clase administrada por spring framework*/
 @Component
 public class MarioGame implements GamingConsole{
 

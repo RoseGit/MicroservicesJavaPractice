@@ -3,13 +3,22 @@ package com.rose.learnspringframework;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+import com.rose.learnspringframework.enterprise.example.web.*;
 import com.rose.learnspringframework.game.GameRunner;
 import com.rose.learnspringframework.game.MarioGame;
 import com.rose.learnspringframework.game.PacmanGame;
 import com.rose.learnspringframework.game.SuperContraGame;
 
+/*Esta anotacion por default tiene la anotacion @ComponentScan y escanea el directorio actual 
+ * y sus sub directorios para buscar anotaciones tipo @Component y administrar las clases */
 @SpringBootApplication
+
+/*sobreescribe la ruta por default de los paquetes*/
+//@ComponentScan("com.rose.learnspringframework.1")
+/*Tambien se pueden definir varios paquetes pasando un array de paquetes de esta forma */
+//@ComponentScan({"com.rose.learnspringframework.1", "com.rose.learnspringframework.2", "com.rose.learnspringframework.3"} )
 public class LearnSpringFrameworkApplication {
 
 	public static void main(String[] args) {
@@ -31,6 +40,9 @@ public class LearnSpringFrameworkApplication {
 		//GameRunner runner = new GameRunner(game);
 		//runner.run();
 		 */
+		
+		var controller = context.getBean(MyWebController.class);
+		System.out.println(controller.returnValueFromBusinessService());
 	}
 
 }
