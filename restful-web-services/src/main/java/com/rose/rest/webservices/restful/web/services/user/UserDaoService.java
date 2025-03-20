@@ -1,0 +1,19 @@
+package com.rose.rest.webservices.restful.web.services.user;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class UserDaoService {
+
+	private static List<User> users = new ArrayList<User>();
+	
+	static {
+		users.add(new User(1, "Adam", LocalDate.now().minusYears(30)));
+		users.add(new User(1, "Eve", LocalDate.now().minusYears(25)));
+		users.add(new User(1, "Jim", LocalDate.now().minusYears(20)));
+	};
+}
