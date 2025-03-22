@@ -24,7 +24,9 @@ public class UserDaoService {
 	
 	public User findOne(int id) {
 		Predicate<? super User> predicate = user -> user.getId().equals(id); 
-		return users.stream().filter(predicate).findFirst().get();
+		return users.stream()
+				.filter(predicate).findFirst() //find the user
+				.orElse(null); //devolver valor que nosotros definamos si no existe, que no arroje exception
 	}
 	
 	public User saveUser(User user) {
@@ -33,4 +35,8 @@ public class UserDaoService {
 		return user;
 	}
 	
+	public void deleteById(int id ) {
+		Predicate<? super User> predicate = user -> user.getId().equals(id);
+		users.removeIf(predicate);
+	}
 }
