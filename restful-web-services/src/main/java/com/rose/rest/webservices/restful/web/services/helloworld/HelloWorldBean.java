@@ -3,7 +3,7 @@ package com.rose.rest.webservices.restful.web.services.helloworld;
 public class HelloWorldBean {
 
 	private String message;
-
+	
 	public HelloWorldBean(String message) {
 		this.message = message;
 	}
