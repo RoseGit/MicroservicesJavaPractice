@@ -1,15 +1,18 @@
 package com.rose.rest.webservices.restful.web.services.filtering;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 // Se puede hacer ignore a nivel de clase especificando 
 // el nombre de las propiedades que no queremos regresar en la respuesta 
 // @JsonIgnoreProperties({"field1", "field2"})
+
+@JsonFilter("SomeBeanFilter")
 public class SomeBean {
 
 	private String filed1;
-	@JsonIgnore	
+	//@JsonIgnore	
 	private String filed2;
 	private String filed3;
 	
