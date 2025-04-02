@@ -48,6 +48,15 @@ public class CourseCommandLineRunner implements CommandLineRunner{
 		
 		System.out.println(repositoryDataJpa.findById(8L).toString());
 		System.out.println(repositoryDataJpa.findById(9L).toString());
+		
+		System.out.println(repositoryDataJpa.findByAuthor("").toString());
+		System.out.println(repositoryDataJpa.findByAuthor("In28Minutes").toString());
+		
+		System.out.println(repositoryDataJpa.findByName("").toString());
+		System.out.println(repositoryDataJpa.findByName("Learn DevOps Spring Data JPA").toString());
+		
+		
+		
 	}
 
 }
