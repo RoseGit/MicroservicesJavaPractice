@@ -13,12 +13,18 @@ import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
+/**
+ * Defines the User entity and its database mapping.
+ */
 @Entity(name = "user_details")
 public class User {
 	
+	/**
+	 * Default constructor.
+	 */
 	protected User() {
-		
 	}
+	
 	@Id
 	@GeneratedValue
 	private Integer id;
@@ -35,6 +41,12 @@ public class User {
 	@JsonIgnore
 	private List<Post> posts;
 	
+	/**
+	 * Constructor with values.
+	 * @param id The user id
+	 * @param name The user's name
+	 * @param birthDate The user's birthday
+	 */
 	public User(Integer id, String name, LocalDate birthDate) {
 		super();
 		this.id = id;
@@ -42,34 +54,62 @@ public class User {
 		this.birthDate = birthDate;
 	}
 
+	/**
+	 * @return The user id.
+	 */
 	public Integer getId() {
 		return id;
 	}
 
+	/**
+	 * Set the id value.
+	 * @param id The value of id.
+	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return The user's name
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Set the name value.
+	 * @param name The value of name.
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * @return The user's birthday
+	 */
 	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 
+	/**
+	 * Set the birthDate value.
+	 * @param birthDate the value of birthDate.
+	 */
 	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 	
+	/**
+	 * @return User posts.
+	 */
 	public List<Post> getPosts() {
 		return posts;
 	}
 
+	/**
+	 * Set the posts value.
+	 * @param posts the value of posts.
+	 */
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
@@ -78,6 +118,4 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", birthDate=" + birthDate + "]";
 	}
-
-	
 }

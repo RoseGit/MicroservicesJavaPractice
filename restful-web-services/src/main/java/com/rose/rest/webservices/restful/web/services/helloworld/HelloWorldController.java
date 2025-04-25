@@ -10,11 +10,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/***
+ * Simple rest services
+ */
 @RestController
 public class HelloWorldController {
 
 	private MessageSource messageSource;
 	
+	/***
+	 * Default constructor
+	 * @param messageSource See {@link MessageSource}
+	 */
 	public HelloWorldController(MessageSource messageSource) {
 		this.messageSource = messageSource;
 	}
@@ -48,6 +55,10 @@ public class HelloWorldController {
 		return new HelloWorldBean(String.format("Hello world %s", name));
 	}
 	
+	/***
+	 * Shows how to internationalizeed a message
+	 * @return The same message, but in a different language.
+	 */
 	@GetMapping(path = "/hello-world-internationalized")
 	public String helloWorldInternationalized() {
 		/*
@@ -57,9 +68,7 @@ public class HelloWorldController {
 		 * locale lo tomames de los header de la peticion 
 		 * */
 		
-		//Obteniendo el locale desde la petición, si no se especifica toma por default el del sistema 
-		
-		
+		//Obteniendo el locale desde la petición, si no se especifica toma por default el del sistema
 		Locale locale = LocaleContextHolder.getLocale();
 		return messageSource.getMessage("good.morning.message", null, "Default message", locale );
 		//return "Hello World";
