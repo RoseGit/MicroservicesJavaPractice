@@ -8,6 +8,9 @@ import com.rose.learn.jpa.hibernate.course.jdbc.CourseJdbcRepository;
 import com.rose.learn.jpa.hibernate.course.jpa.CourseJpaRepository;
 import com.rose.learn.jpa.hibernate.course.springdatajpa.CourseSpringDataJpaRepository;
 
+/**
+ * Executes SQL statements when the application starts
+ */
 @Component
 public class CourseCommandLineRunner implements CommandLineRunner{
 
@@ -20,6 +23,9 @@ public class CourseCommandLineRunner implements CommandLineRunner{
 	@Autowired
 	private CourseSpringDataJpaRepository repositoryDataJpa;
 	
+	/**
+	 * Execute SQL statements.
+	 */
 	@Override
 	public void run(String... args) throws Exception {
 		repositoryJdbc.insert(new Course(1,"Learn AWS JDBC","In28Minutes"));
@@ -54,9 +60,6 @@ public class CourseCommandLineRunner implements CommandLineRunner{
 		
 		System.out.println(repositoryDataJpa.findByName("").toString());
 		System.out.println(repositoryDataJpa.findByName("Learn DevOps Spring Data JPA").toString());
-		
-		
-		
 	}
 
 }

@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.rose.learn.jpa.hibernate.course.Course;
 
+/**
+ * Demonstrates the use of a repository using JDBC
+ */
 @Repository
 public class CourseJdbcRepository {
 
@@ -30,14 +33,27 @@ public class CourseJdbcRepository {
 			WHERE ID = ? 
 			""";
 	
+	/**
+	 * Register a new course registration.
+	 * @param course The entity to save.
+	 */
 	public void insert(Course course) {
 		springJdbcTemplate.update(INSERT_QUERY, course.getId(), course.getName(), course.getAuthor());
 	}
 	
+	/**
+	 * Delete a course using its identifier
+	 * @param id The course Id.
+	 */
 	public void deletebyId(long id) {
 		springJdbcTemplate.update(DELETE_QUERY, id);
 	}
 	
+	/**
+	 * Allows you to retrieve information using the course identifier
+	 * @param id The course ID.
+	 * @return See {@link Course}
+	 */
 	public Course selectbyId(long id) {
 		return springJdbcTemplate.queryForObject(SELECT_QUERY, new BeanPropertyRowMapper<>(Course.class), id);
 	}
