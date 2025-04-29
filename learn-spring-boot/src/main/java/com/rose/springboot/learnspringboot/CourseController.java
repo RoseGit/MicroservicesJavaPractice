@@ -6,9 +6,16 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Course services controller
+ */
 @RestController
 public class CourseController {
 
+	/**
+	 * Simple service that returns all registered courses.
+	 * @return
+	 */
 	@RequestMapping("/courses")
 	public List<Course> retieveAllCourses() {
 		return Arrays.asList(
