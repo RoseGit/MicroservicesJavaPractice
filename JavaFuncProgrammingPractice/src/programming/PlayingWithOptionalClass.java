@@ -4,8 +4,15 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
+/**
+ * Demonstrates the use of the optional class.
+ */
 public class PlayingWithOptionalClass {
 
+	/**
+	 * the main method of the program
+	 * @param args Extra program information
+	 */
 	public static void main (String args[]) {
 		List<String> fruits = List.of("banana","apple","mango");
 		
