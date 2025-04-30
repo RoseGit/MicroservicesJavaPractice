@@ -21,6 +21,10 @@ import com.rose.learnspringframework.game.SuperContraGame;
 //@ComponentScan({"com.rose.learnspringframework.1", "com.rose.learnspringframework.2", "com.rose.learnspringframework.3"} )
 public class LearnSpringFrameworkApplication {
 
+	/**
+	 * The main method of execution.
+	 * @param args extra information that the program uses.
+	 */
 	public static void main(String[] args) {
 		
 		/*Iteration 3*/
