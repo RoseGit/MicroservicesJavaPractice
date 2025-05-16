@@ -20,6 +20,9 @@ public class CurrencyExchangeController {
 			@PathVariable String to) {
 		
 		var currencyExchange = new CurrencyExchange(1000L, from, to, BigDecimal.valueOf(50));
+		
+		/*Para generar otra instancia de la misma aplicacion en Run Configurations..
+		 * Pasamos en los argumentos -Dserver.port=8001 esto sustituye el valor en el archivo properties de la propiedad local.server.port*/
 		currencyExchange.setEnvironment(environment.getProperty("local.server.port"));
 		
 		
