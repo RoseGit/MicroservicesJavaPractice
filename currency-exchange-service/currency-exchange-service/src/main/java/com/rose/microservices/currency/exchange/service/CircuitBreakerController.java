@@ -13,7 +13,7 @@ public class CircuitBreakerController {
 	private Logger logger = LoggerFactory.getLogger(CircuitBreakerController.class);
 	
 	@GetMapping("/sample-api")
-	@Retry(name="default")
+	@Retry(name="sample-api")//El nombre debe hacer match con el archivo .properties de la configuracion, puedo tener una configuracion de intentos por servicio
 	public String simpleApi() {
 		logger.info("Sample call received");
 		//provocandi un fallo y validando el uso de @Retry
