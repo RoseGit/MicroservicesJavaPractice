@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 
 @RestController
@@ -14,7 +16,9 @@ public class CircuitBreakerController {
 	
 	@GetMapping("/sample-api")
 	//El nombre debe hacer match con el archivo .properties de la configuracion, puedo tener una configuracion de intentos por servicio
-	@Retry(name="sample-api", fallbackMethod = "hardCodedResponse")
+	//@Retry(name="sample-api", fallbackMethod = "hardCodedResponse")
+	//Esta anotacion permite enviar la solicitud de hardCodedResponse en automatico si detecta que el servicio falla multiples veces
+	@CircuitBreaker(name="default", fallbackMethod = "hardCodedResponse")
 	public String simpleApi() {
 		logger.info("Sample call received");
 		//provocandi un fallo y validando el uso de @Retry
