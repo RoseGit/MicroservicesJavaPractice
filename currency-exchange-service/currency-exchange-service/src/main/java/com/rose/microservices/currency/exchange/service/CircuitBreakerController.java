@@ -13,11 +13,19 @@ public class CircuitBreakerController {
 	private Logger logger = LoggerFactory.getLogger(CircuitBreakerController.class);
 	
 	@GetMapping("/sample-api")
-	@Retry(name="sample-api")//El nombre debe hacer match con el archivo .properties de la configuracion, puedo tener una configuracion de intentos por servicio
+	//El nombre debe hacer match con el archivo .properties de la configuracion, puedo tener una configuracion de intentos por servicio
+	@Retry(name="sample-api", fallbackMethod = "hardCodedResponse")
 	public String simpleApi() {
 		logger.info("Sample call received");
 		//provocandi un fallo y validando el uso de @Retry
 		var restTemplate = new RestTemplate().getForEntity("http://localhost:8080", String.class);
 		return restTemplate.getBody();
+	}
+	
+	//Debe aceptar un parametro de tipo Throwable
+	//Puedo manejar un fallbackMethod diferente por cada tipo de exception 
+	//Esto se ejecuta hasta que se terminan todos los reintentos de llamada al servicio 
+	public String hardCodedResponse(Exception ex) {
+		return "Response hardcoded";
 	}
 }
